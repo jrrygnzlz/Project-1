@@ -15,14 +15,11 @@ library(ggplot2)
 # Open the data in your computer and Define file paths.
 # Just make sure you are working in the right place. 
 
-## --- Here's what mine looks like --- DON'T INCLUDE IN FINAL SCRIPT
-getwd()
-setwd("C:/Users/jerry/Documents/Git/Project-1")
+## --- Here's what mine looks like ---
+# getwd()
+# setwd("C:/Users/jerry/Documents/Git/Project-1")
 
 # --- Load the data ---
-
-# --- Load the data dictionary (if available) ---
-
 data_location <- "Data/Raw_data/penguins_raw_dirty.csv"
 rawdata <- read.csv(data_location, check.names=FALSE)
 dictionary_path <- "Data/Raw_data/datadictionary.csv"
