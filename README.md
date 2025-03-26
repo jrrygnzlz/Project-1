@@ -39,9 +39,9 @@ Please see the `README.md` files in each folder for more details.
 2. For the second project, we are analyzing the cleaned data, so have Data, Code, Results, and Products folders
 3. For the third project, please analyze your own data with data cleaning, analysis, and report preparation. 
 
-# Acknowledgement
- This template was cloned and modified from <https://github.com/andreashandel/dataanalysis-template>
-
  # Software requirements
 
 This template lays out a data analysis project and report writing using R, Quarto, Github and a reference manager for bibtex. A plain text editor is also necessary, and wordprocessing software to open .docx if you wish to use that format (e.g. MS Word, MacOS Pages, or [LibreOffice](https://www.libreoffice.org/)). 
+
+# Acknowledgement
+ This template was cloned and modified from <https://github.com/andreashandel/dataanalysis-template>
