@@ -6,6 +6,8 @@ In Project 1 the main focus is to:
  2) Analyze it further
  3) Make it reproducible for others to use
 
+Here is a link to my script and directions that you can run and try for yourself: INSERT HTML
+
 For Project 1 we only have to use the Data and Code folders.
 
 # Getting started
