@@ -1,0 +1,262 @@
+### Project 1: Penguin Data Cleaning and Analysis ###
+# Author: Gerardo Gonzalez
+# Date: March 2025
+# Purpose: Clean and analyze penguin data
+
+
+## --- Packages ---
+# Load required packages
+library(dplyr) 
+library(tidyr)
+library(skimr)
+library(ggplot2)
+
+## ---- Open the data in your perferred location in your computer -----
+# Open the data in your computer and Define file paths.
+# Just make sure you are working in the right place. 
+# It should look something like this:
+# data_location <- "../../Data/Raw_data/penguins_raw_dirty.csv"
+# data_path <- "../../Data/Raw_data/"
+
+## --- Here's what mine looks like --- DON'T INCLUDE IN FINAL SCRIPT
+getwd()
+setwd("C:/Users/jerry/Documents/Git/Project-1/Data/Raw_data")
+
+# --- Load the data ---
+rawdata <- read.csv(data_location, check.names=FALSE)
+
+# --- Load the data dictionary (if available) ---
+# Print the Path just to see where it's at
+print(dictionary_path)
+# Make sure it exists
+file.exists(dictionary_path)
+# Load the dictionary
+dictionary <- read.csv(dictionary_path)
+print(dictionary)
+
+
+## ---- Explore The Data --------
+# Now we can explore the data and first get a glimpse of what it looks like.
+# We can do this by using the glimpse, summary, and skimr functions.
+# Look through the data and see of there are any errors or anything unusual we may need to fix
+dplyr::glimpse(rawdata)
+summary(rawdata)
+skimr::skim(rawdata)
+
+
+
+## ---- ERROR 1: Fix Species Typos --------
+# This dataset should only have 3 species, but we actually have 9
+# Let's look at the different species using the "unique" command
+
+# Check for species name inconsistencies
+unique(rawdata$Species)
+
+# Here we can easily see all the typos, lets fix them.
+# First we'll make a working copy of the raw data so we can compare our modified version to the original later on.
+
+# Create a working copy of rawdata
+d1 <- rawdata
+
+# --- Fix species name typos ---
+d1$Species <- sub("gTin", "guin", d1$Species)
+d1$Species <- sub("gufn", "guin", d1$Species)
+d1$Species <- sub("PeOguin", "Penguin", d1$Species) # Fix corrected here!
+d1$Species <- sub("Peguin", "Penguin", d1$Species)
+d1$Species <- sub("AdeKie", "Adelie", d1$Species)
+d1$Species <- sub("AdelieMPenguin", "Adelie Penguin", d1$Species)
+d1$Species <- sub("Ventoo", "Gentoo", d1$Species)
+
+# We can also remove the word "penguin" from the species so we jsut get the three:
+# Adelie, Gentoo, & Chinstrap
+d1$Species <- gsub(" [Pp]enguin \\(.*\\)", "", d1$Species)
+
+# --- Now lets if our edits were correct and that we have only 3 species ---
+unique(d1$Species)
+
+# Looks good!
+
+
+
+## --- ERROR 2: Missing Values ---
+# When you use the dplyr::glimpse(rawdata) command, we notice there is a missing value for Culmen length.
+# We need to fix this by converting "missing" values to NA and ensure numeric type for Culmen Length
+c1 <- d1$`Culmen Length (mm)`
+c1[c1 == "missing"] <- NA  
+c1 <- as.numeric(c1)  
+d1$`Culmen Length (mm)` <- c1
+
+## --- Check to make sure we only have numeric values using skimr command ---
+skimr::skim(d1)
+
+# Looks good!
+
+
+
+## --- ERROR 3: Irregular Data points ---
+# We can use plots to look at the distribution of the data just to get a visual and see of anything looks off.
+# We can plot a histogram of culmen length and frequency, and a plot of body mass and culmen length.
+hist(d1$`Culmen Length (mm)`)
+plot(d1$`Body Mass (g)`, d1$`Culmen Length (mm)`)
+
+## Fix The Outliers
+# In the histogram, 3 penguins have extremely long culmen lengths (300+mm) which is most likely a typo that we need to remove.
+# --- Fix incorrect Culmen Length values (>300) ---
+d2 <- d1
+c1[!is.na(c1) & c1 > 300] <- c1[!is.na(c1) & c1 > 300] / 10
+d2$`Culmen Length (mm)` <- c1
+
+# Check again
+skimr::skim(d2)
+hist(d2$`Culmen Length (mm)`)
+
+# Looks Good!
+
+# --- Remove incorrect Body Mass values (<100g) ---
+# In the Bivariate plot, we can see some extremely light penguins. These are most likely babies and aren't relevant to the data set.
+# The data focuses on adults. Let's go ahead and remove them.
+d3 <- d2
+mm <- d3$`Body Mass (g)`
+mm[mm < 100] <- NA  
+nas <- which(is.na(mm))  
+d3 <- d3[-nas, ]  
+
+# Verify fix
+skimr::skim(d3)
+plot(d3$`Body Mass (g)`, d3$`Culmen Length (mm)`)
+
+# Looks Good!
+
+  
+  
+## ---- ERROR 4: Missing Masses  --------
+# Mass is the main size variable, so we need to remove individuals with misssing masses in order to analyze the data. 
+d3$Species <- as.factor(d3$Species)
+d3$Sex <- as.factor(d3$Sex)
+d3$Island <- as.factor(d3$Island)
+
+# Final check
+skimr::skim(d3)
+hist(d3$`Body Mass (g)`)
+plot(d3$`Body Mass (g)`, d3$`Culmen Length (mm)`)
+
+# Looks Good!
+
+
+
+## --- Have Species, Sex, and Island coded as a categorical/factor variable ---
+
+d3$Species <- as.factor(d3$Species)
+d3$Sex <- as.factor(d3$Sex)
+d3$Island <- as.factor(d3$Island)  
+skimr::skim(d3)
+
+# Looks Good!
+
+
+## --- EXTRA ANALYSIS: Make Bivariate Plots --------
+# We can make some bivariate plots for any remaining continuous data to ensure there are no further errors.
+# We cna make many different plots and just have fun exploring the visual representations of the relationships
+# between different variables. 
+
+# Scatter plot: Body Mass vs. Culmen Depth
+plot(d3$`Body Mass (g)`, d3$`Culmen Depth (mm)`,
+     main="Body Mass vs. Culmen Depth",
+     xlab="Body Mass (g)", ylab="Culmen Depth (mm)",
+     pch=19, col="steelblue")
+
+# Scatter plot: Culmen Length vs. Culmen Depth
+plot(d3$`Culmen Length (mm)`, d3$`Culmen Depth (mm)`,
+     main="Culmen Length vs. Culmen Depth",
+     xlab="Culmen Length (mm)", ylab="Culmen Depth (mm)",
+     pch=19, col="forestgreen")
+
+# Scatter plot: Flipper Length vs. Body Mass
+plot(d3$`Flipper Length (mm)`, d3$`Body Mass (g)`,
+     main="Flipper Length vs. Body Mass",
+     xlab="Flipper Length (mm)", ylab="Body Mass (g)",
+     pch=19, col="darkorange")
+
+# Boxplot: Body Mass by Species
+boxplot(d3$`Body Mass (g)` ~ d3$Species,
+        main="Body Mass by Species",
+        xlab="Species", ylab="Body Mass (g)",
+        col=c("skyblue","lightgreen","lightpink"))
+
+# Boxplot: Culmen Length by Island
+boxplot(d3$`Culmen Length (mm)` ~ d3$Island,
+        main="Culmen Length by Island",
+        xlab="Island", ylab="Culmen Length (mm)",
+        col=c("cornflowerblue","aquamarine","gold"))
+
+# Density plots of Body Mass by Species (requires tidyverse/ggplot2)
+library(ggplot2)
+ggplot(d3, aes(x=`Body Mass (g)`, fill=Species)) +
+  geom_density(alpha=0.5) +
+  labs(title="Density of Body Mass by Species")
+
+# Density plot of Flipper Length by Sex
+ggplot(d3, aes(x=`Flipper Length (mm)`, fill=Sex)) +
+  geom_density(alpha=0.5) +
+  labs(title="Density of Flipper Length by Sex")
+
+# Histogram of Body Mass by Species
+ggplot(d3, aes(x = `Body Mass (g)`, fill = Species)) +
+  geom_histogram(binwidth = 250, position = "dodge", alpha = 0.7) +
+  theme_minimal() +
+  labs(title = "Distribution of Body Mass by Species")
+
+# Bar plot: Penguin Count per Island
+ggplot(d3, aes(x = Island, fill = Island)) +
+  geom_bar() +
+  theme_minimal() +
+  labs(title = "Penguin Count per Island")
+
+# Violin plot: Flipper Length by Species
+ggplot(d3, aes(x = Species, y = `Flipper Length (mm)`, fill = Species)) +
+  geom_violin(alpha = 0.7) +
+  theme_minimal() +
+  labs(title = "Flipper Length Distribution by Species")
+
+# Faceted scatter plot
+ggplot(d3, aes(x = `Body Mass (g)`, y = `Culmen Length (mm)`, color = Species)) +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~ Species) +
+  theme_minimal() +
+  labs(title = "Body Mass vs. Culmen Length for Each Species")
+
+
+
+## ---- FINALIZE THE DATA --------
+
+# Check the columns first
+colnames(d3)
+
+library(dplyr)
+
+# Remove the unnecessary columns
+d_final <- d3 %>% 
+  dplyr::select(-c("Comments", 
+                   "Delta 15 N (o/oo)", 
+                   "Delta 13 C (o/oo)", 
+                   "Sample Number"))
+
+# Remove unused factor levels clearly
+d_final$Species <- droplevels(d_final$Species)
+d_final$Island  <- droplevels(d_final$Island)
+d_final$Sex     <- droplevels(d_final$Sex)
+
+# Do a final check to make sure everything looks good
+skimr::skim(d_final)
+summary(d_final)
+head(d_final)
+
+
+## --- SAVE THE DATA ---
+# Save processed data as an R file and csv
+processeddata <- d_final
+
+saveRDS(processeddata, file = "../../Data/Processed_data/penguins.rds")
+write.csv(processeddata, file = "../../Data/Processed_data/penguins.csv", row.names = FALSE)
+
+# All Done.. Great Job!
