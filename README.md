@@ -1,5 +1,4 @@
-Welcome to my Project Repository for Dr. Marguerite Butler's ZOOL710 class at UH Manoa
-
+# Welcome to my Project Repository for Dr. Marguerite Butler's ZOOL710 class at UH Manoa
 In this Repository consists of 3 projects, for now lets focus on Project 1.
 
 In Project 1 the main focus was to:
