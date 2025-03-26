@@ -25,9 +25,6 @@ dictionary_path <- paste(data_path, "datadictionary.csv", sep="")
 if (file.exists(dictionary_path)) {
   dictionary <- read.csv(dictionary_path)
   print(dictionary)
-} else {
-  message("Data dictionary not found.")
-}
 
 ## ---- exploredata --------
 # Overview of the dataset
