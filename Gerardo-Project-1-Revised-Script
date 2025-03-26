@@ -14,23 +14,21 @@ library(ggplot2)
 ## ---- Open the data in your perferred location in your computer -----
 # Open the data in your computer and Define file paths.
 # Just make sure you are working in the right place. 
-# It should look something like this:
-# data_location <- "../../Data/Raw_data/penguins_raw_dirty.csv"
-# data_path <- "../../Data/Raw_data/"
 
 ## --- Here's what mine looks like --- DON'T INCLUDE IN FINAL SCRIPT
 getwd()
-setwd("C:/Users/jerry/Documents/Git/Project-1/Data/Raw_data")
+setwd("C:/Users/jerry/Documents/Git/Project-1")
 
 # --- Load the data ---
-rawdata <- read.csv(data_location, check.names=FALSE)
 
 # --- Load the data dictionary (if available) ---
-# Print the Path just to see where it's at
+
+data_location <- "Data/Raw_data/penguins_raw_dirty.csv"
+rawdata <- read.csv(data_location, check.names=FALSE)
+dictionary_path <- "Data/Raw_data/datadictionary.csv"
+file.exists(data_location)    
+file.exists(dictionary_path) 
 print(dictionary_path)
-# Make sure it exists
-file.exists(dictionary_path)
-# Load the dictionary
 dictionary <- read.csv(dictionary_path)
 print(dictionary)
 
@@ -253,10 +251,11 @@ head(d_final)
 
 
 ## --- SAVE THE DATA ---
-# Save processed data as an R file and csv
+# Save processed data as an R file and csv in a new folder
 processeddata <- d_final
-
+dir.create("../../Data/Processed_data", recursive = TRUE)
 saveRDS(processeddata, file = "../../Data/Processed_data/penguins.rds")
 write.csv(processeddata, file = "../../Data/Processed_data/penguins.csv", row.names = FALSE)
+
 
 # All Done.. Great Job!
