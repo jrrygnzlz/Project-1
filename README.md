@@ -6,7 +6,7 @@ In Project 1 the main focus is to:
  2) Analyze it further
  3) Make it reproducible for others to use
 
-# For Project 1 we only have to use the Data and Code folders.
+For Project 1 we only have to use the Data and Code folders.
 
 # Getting started
 
