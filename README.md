@@ -1,7 +1,7 @@
 # Welcome to my Project Repository for Dr. Marguerite Butler's ZOOL710 class at UH Manoa
 In this Repository consists of 3 projects, for now lets focus on Project 1.
 
-In Project 1 the main focus was to:
+In Project 1 the main focus is to:
  1) Clean the palmer penguins data set
  2) Analyze it further
  3) Make it reproducible for others to use
