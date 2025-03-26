@@ -107,7 +107,7 @@ hist(d2$`Culmen Length (mm)`)
 
 # Looks Good!
 
-# --- Remove incorrect Body Mass values (<100g) ---
+# --- ERROR4: Remove incorrect Body Mass values (<100g) ---
 # In the Bivariate plot, we can see some extremely light penguins. These are most likely babies and aren't relevant to the data set.
 # The data focuses on adults. Let's go ahead and remove them.
 d3 <- d2
@@ -124,7 +124,7 @@ plot(d3$`Body Mass (g)`, d3$`Culmen Length (mm)`)
 
   
   
-## ---- ERROR 4: Missing Masses  --------
+## ---- ERROR 5: Missing Masses  --------
 # Mass is the main size variable, so we need to remove individuals with misssing masses in order to analyze the data. 
 d3$Species <- as.factor(d3$Species)
 d3$Sex <- as.factor(d3$Sex)
