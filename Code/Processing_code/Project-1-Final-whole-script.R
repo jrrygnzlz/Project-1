@@ -22,6 +22,11 @@ library(ggplot2)
 
 # ---- Loaddata ----
 
+## --- Here's what mine looks like ---
+# getwd()
+# setwd("C:/Users/jerry/Documents/Git/Project-1")
+
+# --- Load the data ---
 data_location <- "Data/Raw_data/penguins_raw_dirty.csv"
 rawdata <- read.csv(data_location, check.names=FALSE)
 dictionary_path <- "Data/Raw_data/datadictionary.csv"
@@ -113,7 +118,7 @@ hist(d2$`Culmen Length (mm)`)
 
 # Looks Good!
 
-# --- Remove incorrect Body Mass values (<100g) ---
+# --- ERROR4: Remove incorrect Body Mass values (<100g) ---
 # In the Bivariate plot, we can see some extremely light penguins. These are most likely babies and aren't relevant to the data set.
 # The data focuses on adults. Let's go ahead and remove them.
 d3 <- d2
@@ -130,7 +135,7 @@ plot(d3$`Body Mass (g)`, d3$`Culmen Length (mm)`)
 
   
   
-## ---- ERROR 4: Missing Masses  --------
+## ---- ERROR 5: Missing Masses  --------
 # Mass is the main size variable, so we need to remove individuals with misssing masses in order to analyze the data. 
 d3$Species <- as.factor(d3$Species)
 d3$Sex <- as.factor(d3$Sex)
@@ -160,46 +165,66 @@ skimr::skim(d3)
 # We cna make many different plots and just have fun exploring the visual representations of the relationships
 # between different variables. 
 
-# Scatter plot: Body Mass vs. Culmen Depth
+# --- Scatter plot: Body Mass vs. Culmen Depth ---
 plot(d3$`Body Mass (g)`, d3$`Culmen Depth (mm)`,
      main="Body Mass vs. Culmen Depth",
      xlab="Body Mass (g)", ylab="Culmen Depth (mm)",
      pch=19, col="steelblue")
 
-# Scatter plot: Culmen Length vs. Culmen Depth
+# This plot looks at if the heavier penguins tend to have deeper culmens (beaks).
+# A positive relationship could mean that larger penguins have proportionally
+# larger beak depths.
+
+
+# --- Scatter plot: Culmen Length vs. Culmen Depth ---
 plot(d3$`Culmen Length (mm)`, d3$`Culmen Depth (mm)`,
      main="Culmen Length vs. Culmen Depth",
      xlab="Culmen Length (mm)", ylab="Culmen Depth (mm)",
      pch=19, col="forestgreen")
 
-# Scatter plot: Flipper Length vs. Body Mass
+# This graph explores the relationship between beak length and beak depth.
+# This could reveal adaptations to diet or feeding methods.
+
+# --- Scatter plot: Flipper Length vs. Body Mass ---
 plot(d3$`Flipper Length (mm)`, d3$`Body Mass (g)`,
      main="Flipper Length vs. Body Mass",
      xlab="Flipper Length (mm)", ylab="Body Mass (g)",
      pch=19, col="darkorange")
 
-# Boxplot: Body Mass by Species
+# This plot looks at of penguins with longer flippers tend to have greater body mass.
+# Penguins with longer flipers may correlate to better swimming efficieny and reflect overall body condition.
+
+# --- Boxplot: Body Mass by Species ---
 boxplot(d3$`Body Mass (g)` ~ d3$Species,
         main="Body Mass by Species",
         xlab="Species", ylab="Body Mass (g)",
         col=c("skyblue","lightgreen","lightpink"))
 
-# Boxplot: Culmen Length by Island
+# This box plot compares the body mass distribution across the three penguin species. 
+
+# --- Boxplot: Culmen Length by Island ---
 boxplot(d3$`Culmen Length (mm)` ~ d3$Island,
         main="Culmen Length by Island",
         xlab="Island", ylab="Culmen Length (mm)",
         col=c("cornflowerblue","aquamarine","gold"))
 
-# Density plots of Body Mass by Species (requires tidyverse/ggplot2)
+# This boxplot looks at the difference in beak length among penguins from different islands. 
+# Variations might reveal island specific ecological or genetic influences on penguin morphology.
+
+# --- Density plots of Body Mass by Species (requires tidyverse/ggplot2) ---
 library(ggplot2)
 ggplot(d3, aes(x=`Body Mass (g)`, fill=Species)) +
   geom_density(alpha=0.5) +
   labs(title="Density of Body Mass by Species")
 
+# This plot looks at the body mass distribution for each penguin species.
+
 # Density plot of Flipper Length by Sex
 ggplot(d3, aes(x=`Flipper Length (mm)`, fill=Sex)) +
   geom_density(alpha=0.5) +
   labs(title="Density of Flipper Length by Sex")
+
+# This plot looks at the differences in flipper length between males and females and if there are any major differences. 
 
 # Histogram of Body Mass by Species
 ggplot(d3, aes(x = `Body Mass (g)`, fill = Species)) +
@@ -207,17 +232,25 @@ ggplot(d3, aes(x = `Body Mass (g)`, fill = Species)) +
   theme_minimal() +
   labs(title = "Distribution of Body Mass by Species")
 
+# This histogram is just another way to show the distribution of body mass by species.
+
 # Bar plot: Penguin Count per Island
 ggplot(d3, aes(x = Island, fill = Island)) +
   geom_bar() +
   theme_minimal() +
   labs(title = "Penguin Count per Island")
 
+# This bar plot summarizes the number of penguins sampled from each island. 
+# This can help identify possible sampling biases ot differens in penguin population distribution across islands. 
+
 # Violin plot: Flipper Length by Species
 ggplot(d3, aes(x = Species, y = `Flipper Length (mm)`, fill = Species)) +
   geom_violin(alpha = 0.7) +
   theme_minimal() +
   labs(title = "Flipper Length Distribution by Species")
+
+# This plot shows how flipper length varies within and between species.
+# The width indicates the frequency of penguins at a given flipper length. 
 
 # Faceted scatter plot
 ggplot(d3, aes(x = `Body Mass (g)`, y = `Culmen Length (mm)`, color = Species)) +
@@ -226,6 +259,8 @@ ggplot(d3, aes(x = `Body Mass (g)`, y = `Culmen Length (mm)`, color = Species)) 
   theme_minimal() +
   labs(title = "Body Mass vs. Culmen Length for Each Species")
 
+# This plot breaks down the relationship between body mass and culmen length separately by species.
+# It shows if the relationship differs among species and helps identify species-specific patterns or outliers. 
 
 
 ## ---- FINALIZE THE DATA --------
