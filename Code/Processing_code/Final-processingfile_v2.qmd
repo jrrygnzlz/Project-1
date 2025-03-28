@@ -263,6 +263,9 @@ Final Check
 
 Save processed data as an R file and csv in a new folder
 
+For me it will say it already exists because I made a folder for it already, so don't mind that message.
+For you it should work.
+
 ```{r, Finalsave}
 ```
 
