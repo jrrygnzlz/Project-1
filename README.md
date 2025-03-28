@@ -14,7 +14,7 @@ For now lets focus on Project 1.
 
 To access my Project 1 finalized scripts and QMD go to: Code --> Processing Code
 
-To access my Project 1 finalized html strucutre go to: Docs
+To access my Project 1 finalized html structure (script) go to: docs
 
 My Project 1 Website link: https://jrrygnzlz.github.io/Project-1/
 
