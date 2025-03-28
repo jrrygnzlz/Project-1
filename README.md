@@ -7,14 +7,16 @@ Project 3: Analyze your own data with data cleaning, analysis, and report prepar
 
 For now lets focus on Project 1.
 
-In Project 1 the main focus is to:
+### In Project 1 the main focus is to:
  1) Clean the palmer penguins data set
  2) Analyze it further
  3) Make it reproducible for others to use
 
 To access my Project 1 finalized scripts and QMD go to: Code --> Processing Code
-To accedd my Project 1 finalized html strucutre go to: Docs
-Here is a link to my website wih my Project 1 Code and comments formatted in a clean uder friendly way: https://jrrygnzlz.github.io/Project-1/
+
+To access my Project 1 finalized html strucutre go to: Docs
+
+My Project 1 Website link: https://jrrygnzlz.github.io/Project-1/
 
 # Getting started
 This is a Github template repository. The best way to get it and start using it is [by following these steps.](https://help.github.com/en/articles/creating-a-repository-from-a-template)
