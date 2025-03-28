@@ -10,13 +10,12 @@ library(dplyr)
 library(tidyr)
 library(skimr)
 library(ggplot2)
+library(here)
 
-
-# ---- Loaddata ----
-data_location <- "../../Data/Raw_data/penguins_raw_dirty.csv"
-rawdata <- read.csv(data_location, check.names=FALSE)
-dictionary_path <- "../../Data/Raw_data/datadictionary.csv"
-
+## ---- Loaddata ------
+data_location <- here("Data", "Raw_data", "penguins_raw_dirty.csv")
+rawdata <- read.csv(data_location, check.names = FALSE)
+dictionary_path <- here("Data", "Raw_data", "datadictionary.csv")
 
 
 ## ---- Exploredata --------
