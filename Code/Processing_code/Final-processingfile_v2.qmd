@@ -11,7 +11,7 @@ This needs to run to load the R script so we can include the code chunks below.
 Note that you can pull in more than one R script if you want.
 
 ```{r, include=FALSE, cache=FALSE}
-knitr::read_chunk("Project-1-Revised.R")
+knitr::read_chunk("Project-1-Final-Cleaned-script.R")
 ```
 
 # Welcome!
