@@ -1,0 +1,271 @@
+---
+title: "Project 1: Penguin Data Cleaning and Analysis"
+author: "Gerardo Gonzalez"
+date: "March 27, 2025"
+output: html_document
+---
+
+# Setup
+
+This needs to run to load the R script so we can include the code chunks below.
+Note that you can pull in more than one R script if you want.
+
+```{r, include=FALSE, cache=FALSE}
+knitr::read_chunk("Project-1-Revised.R")
+```
+
+# Welcome!
+
+Hello and welcome to my Palmer Penguin Data Analysis project from Dr. Marguerite Butler for the ZOOL710 class here at the University of Hawai'i at Manoa.
+
+In Project 1, the main focus is to:
+
+	1) Clean the palmer penguins data set
+	2) Analyze it further
+	3) Make it reproducible for others to use.
+
+In this document I walk you through how i corrected the errors in the data set as well as all my commands with comments.
+
+Let's walk through project 1 together!
+
+
+
+# Load Required Packages 
+
+```{r, Packages, message = FALSE, warning = FALSE}
+```
+
+# Load Data
+
+After you copy the repository and get in on your computer, Navigate to the Processing Code folder. 
+
+Now let's Load it up!
+
+```{r, Loaddata}
+```
+
+# Explore Data
+
+Now we can explore the data and first get a glimpse of what it looks like.
+We can do this by using the glimpse, summary, and skimr functions.
+Look through the data and see of there are any errors or anything unusual we may need to fix.
+
+```{r, Exploredata}
+```
+
+
+# Error 1: Fix Species Typos
+
+This dataset should only have 3 species, but we actually have 9.
+Let's look at the different species using the "unique" command.
+
+```{r, Cleandata1}
+```
+Here we can easily see all the typos, lets fix them.
+
+First we'll make a working copy of the raw data so we can compare our modified version to the original later on.
+
+```{r, Createcopy}
+```
+
+Now we can fix the species names.
+
+```{r, Cleandata2}
+```
+
+Looks Good!
+
+
+
+# Error 2: Missing Values
+
+When you use the dplyr::glimpse(rawdata) command, we notice there is a missing value for Culmen length.
+We need to fix this by converting "missing" values to NA and ensure numeric type for Culmen Length.
+
+```{r, Fixmissing}
+```
+
+Looks Good!
+
+
+
+# Error 3: Irregular Data Points
+
+We can use plots to look at the distribution of the data just to get a visual and see of anything looks off.
+We can plot a histogram of culmen length and frequency, and a plot of body mass and culmen length.
+
+```{r, Idirregulars}
+```
+
+Fix the Outliers 
+
+In the histogram, 3 penguins have extremely long culmen lengths (300+mm) which is most likely a typo that we need to remove.
+
+```{r, Fixbeak}
+```
+
+Looks Good! 
+
+
+
+# Error 4: Remove Incorrect Body Mass Values 
+
+In the Bivariate plot, we can see some extremely light penguins. These are most likely babies and aren't relevant to the data set.
+
+The data focuses on adults. Let's go ahead and remove them.
+
+```{r, Bodymass}
+```
+
+Looks Good!
+
+
+# Error 5: Missing Masses
+
+Mass is the main size variable, so we need to remove individuals with misssing masses in order to analyze the data. 
+
+```{r, Missingmass}
+```
+
+Looks Good!
+
+
+# Have Species, Sex, and Island coded as categorical/factor variable
+
+```{r, Category}
+```
+
+Looks Good! 
+
+
+
+# Extra Analysis: Make Bivariate Plots
+
+We can make some bivariate plots for any remaining continuous data to ensure there are no further errors.
+We can make many different plots and just have fun exploring the visual representations of the relationships between different variables. 
+
+### Scatter plot 1: Body Mass vs. Culmen Depth
+
+This plot looks at if the heavier penguins tend to have deeper culmens (beaks).
+
+A positive relationship could mean that larger penguins have proportionally larger beak depths.
+
+```{r, Scatter1}
+```
+
+
+### Scatter plot 2: Culmen Length vs. Culmen Depth
+
+This graph explores the relationship between beak length and beak depth.
+
+This could reveal adaptations to diet or feeding methods.
+
+```{r, Scatter2}
+```
+
+### Scatter plot 3: Flipper Length vs. Body Mass
+
+This plot looks at of penguins with longer flippers tend to have greater body mass.
+
+Penguins with longer flipers may correlate to better swimming efficieny and reflect overall body condition.
+
+```{r, Scatter3}
+```
+
+### Boxplot 1: Body Mass by Species
+
+This box plot compares the body mass distribution across the three penguin species.
+
+```{r, Box1}
+```
+
+
+### Boxplot 2: Culmen Length by Island
+
+This boxplot looks at the difference in beak length among penguins from different islands.
+
+Variations might reveal island specific ecological or genetic influences on penguin morphology
+
+```{r, Box2}
+```
+
+
+### Density plot 1: Body Mass by Species
+
+This plot looks at the body mass distribution for each penguin species.
+
+```{r, Dens1}
+```
+
+
+### Density plot 2: Flipper Length by Sex
+
+This plot looks at the differences in flipper length between males and females and if there are any major differences.
+
+```{r, Dens2}
+```
+
+
+### Histogram of Body Mass by Species
+
+This histogram is just another way to show the distribution of body mass by species.
+
+```{r, Histogram}
+```
+
+
+### Bar plot: Penguin Count per Island
+
+This bar plot summarizes the number of penguins sampled from each island.
+
+This can help identify possible sampling biases ot differens in penguin population distribution across islands.
+
+```{r, Barplot}
+```
+
+
+### Violin plot: Flipper Length by Species
+
+This plot shows how flipper length varies within and between species.
+
+The width indicates the frequency of penguins at a given flipper length.
+
+```{r, Violin}
+```
+
+
+### Faceted scatter plot
+
+This plot breaks down the relationship between body mass and culmen length separately by species.
+
+It shows if the relationship differs among species and helps identify species-specific patterns or outliers.
+
+```{r, Faceted}
+```
+
+
+
+# Finalize the Data
+
+Final Clean 
+
+```{r, Finalclean}
+```
+
+Final Check
+
+```{r, Finalcheck}
+```
+
+
+
+# Save the Data
+
+Save processed data as an R file and csv in a new folder
+
+```{r, Finalsave}
+```
+
+
+# All Done...Great Job!
+
