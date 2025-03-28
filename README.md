@@ -6,20 +6,19 @@ In Project 1 the main focus is to:
  2) Analyze it further
  3) Make it reproducible for others to use
 
-Here is a link to my script and directions that you can run and try for yourself: INSERT HTML
-
-For Project 1 we only have to use the Data and Code folders.
+To access my Project 1 finalized scripts, QMD, and html go to:
+      Code --> Processing Code
 
 # Getting started
 
 This is a Github template repository. The best way to get it and start using it is [by following these steps.](https://help.github.com/en/articles/creating-a-repository-from-a-template)
 
-Clone the reposiory to your computer, then your GitHub
+Clone the reposiory to your computer, then push it to your GitHub
 
 Once you got the repository, you can check out the examples by executing them in order. 
  1.  First run the processing code, which will produce the processed data. 
  2.  Then run the analysis scripts, which will take the processed data and produce some results. 
- 3.  Then you can run the manuscript, poster and slides example files in any order. Those files pull in the generated results and display   them. These files also pull in references from the `bibtex` file and format them according to the CSL style.
+ 3.  Then you can run the manuscript, poster and slides example files in any order. Those files pull in the generated results and display them. These files also pull in references from the `bibtex` file and format them according to the CSL style.
 
 # Template content
 
