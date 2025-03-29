@@ -1,8 +1,9 @@
 ---
 title: "Project 1: Penguin Data Cleaning and Analysis"
 author: "Gerardo Gonzalez"
-date: "March 27, 2025"
-output: html_document
+date: "March 22, 2025"
+Format: html
+output-dir: docs
 ---
 
 # Setup
