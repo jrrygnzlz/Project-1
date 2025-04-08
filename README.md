@@ -5,18 +5,14 @@ Project 1: Data cleaning, and some analyzation so we only need the Data and Code
 Project 2: Analyzing the cleaned data, so we need the Data, Code, Results, and Products folders
 Project 3: Analyze your own data with data cleaning, analysis, and report preparation. 
 
-For now lets focus on Project 1.
+To Access my project 1 and 2 work click the link below.
 
-### In Project 1 the main focus is to:
- 1) Clean the palmer penguins data set
- 2) Analyze it further
- 3) Make it reproducible for others to use
+My Project Website link: https://jrrygnzlz.github.io/Project-1/
 
-To access my Project 1 finalized scripts and QMD go to: Code --> Processing Code
+To Access Project 1 code go to Code --> Processing Code folder
+To Access Project 2 code go to Code --> Analysis Code folder
 
-To access my Project 1 finalized html structure (script) go to: docs
-
-My Project 1 Website link: https://jrrygnzlz.github.io/Project-1/
+You can try to run the scripts and walk throuhg it with me on my website link...happy computing! :)
 
 # Getting started
 This is a Github template repository. The best way to get it and start using it is [by following these steps.](https://help.github.com/en/articles/creating-a-repository-from-a-template)

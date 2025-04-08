@@ -1,7 +1,6 @@
 # Code Folder
 
 All of my Project 1 finalized scripts, QMD, and html are in the Processing Code folder.
+All of my Project 2 finalied scripts, QMD, and html are in the Analysis Code folder. 
 
-If you're interested in my Project 1 only, then no need to open the other folder.
-The Analysis code folder will be for project 2.
-
+The combined project scripts and QMD are in the front page of my repository.
