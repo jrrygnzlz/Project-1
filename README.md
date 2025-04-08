@@ -7,7 +7,7 @@ Project 3: Analyze your own data with data cleaning, analysis, and report prepar
 
 To Access my project 1 and 2 work click the link below.
 
-My Project Website link: https://jrrygnzlz.github.io/Project-1/
+My Project Website link: https://jrrygnzlz.github.io/Project-1-2/
 
 To Access Project 1 code go to Code --> Processing Code folder
 
