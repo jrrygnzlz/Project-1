@@ -1,0 +1,127 @@
+---
+title: "Project 2: Penguin Data Analysis"
+author: "Gerardo Gonzalez"
+date: "April 2025"
+format: html
+output-dir: docs
+---
+
+# Setup
+
+This loads the R script so we can include the code chunks below.
+
+```{r, include=FALSE, cache=FALSE}
+knitr::read_chunk("Project-2-Final-Cleaned-script.R")
+```
+
+# Welcome!
+
+Welcome to Project 2 of my Palmer Penguin data analysis for ZOOL710 at the University of Hawai'i at Manoa with Dr. Marguerite Butler.
+
+In this project, we focus on statistical analysis using the cleaned dataset from Project 1. Here, I explore variation in penguin body mass and how it differs across species and islands.
+
+These are the questions I aim to answer:
+
+1. Do penguin species differ significantly in body mass?
+2. Do both species and island influence penguin body mass?
+3. How does body mass vary across species and islands?
+
+Let's walk through Project 2 together!
+
+# Load Packages
+
+Let's first load the packages we need.
+
+```{r, Packages, message = FALSE, warning = FALSE}
+```
+
+# Load Data
+
+Now let's load the cleaned dataset we created in Project 1.
+
+```{r, LoadData}
+```
+
+# Summary Table
+
+We’ll use `skimr` to generate a detailed summary of our dataset.
+
+```{r, SummaryTable}
+```
+
+# Count total number of observations in the dataset
+
+```{r, TotalObservations}
+```
+
+# Calculate N per variable (non-missing values for each column)
+
+```{r, Nper}
+```
+
+# Select and rename relevant columns from the skim summary
+
+```{r, Relcol}
+```
+
+# Compute standard error for continuous variables
+
+```{r, Standarderror}
+```
+
+# Print out the cleaned and renamed summary table
+
+```{r, Viewtable}
+```
+
+# Question 1: Do Species Differ in Body Mass?
+
+Let's test if different penguin species have significantly different body masses.
+
+### Boxplot of Body Mass by Species
+
+We start with a visual comparison using a boxplot.
+
+```{r, BoxplotMassBySpecies}
+```
+
+### ANOVA: Body Mass ~ Species
+
+Now we run an ANOVA to test the statistical significance of the differences.
+
+```{r, ANOVA1}
+```
+
+# Question 2: Do Species and Island Affect Body Mass?
+
+We extend our analysis to see if Island plays a role in explaining mass variation.
+
+### ANOVA: Body Mass ~ Species + Island
+
+```{r, ANOVA2}
+```
+
+# Visualize the Interaction Between Species and Island
+
+Let's create a grouped boxplot to explore how species and island interact in relation to body mass.
+
+```{r, InteractionPlot}
+```
+
+# Question 3: Body Mass Distribution by Species and Island
+
+We use a faceted density plot to visualize the distribution of body mass by species on each island.
+
+```{r, DensityPlot}
+```
+
+# Save Summary Table (Optional)
+
+Finally, we save the summary table we created in case we want to use it in another analysis or report.
+
+```{r, SaveClean}
+```
+
+# All Done!
+
+Thanks for following along in Project 2. This completes my analysis of penguin body mass variation using statistical modeling and data visualization!

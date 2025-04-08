@@ -1,0 +1,14 @@
+"Variable","N","Mean","SE","Counts"
+"studyName",339,NA,NA,NA
+"Region",339,NA,NA,NA
+"Stage",339,NA,NA,NA
+"Individual ID",339,NA,NA,NA
+"Clutch Completion",339,NA,NA,NA
+"Date Egg",339,NA,NA,NA
+"Species",339,NA,NA,"Ade: 151, Gen: 120, Chi: 68"
+"Island",339,NA,NA,"Bis: 164, Dre: 124, Tor: 51"
+"Sex",330,NA,NA,"MAL: 168, FEM: 162"
+"Culmen Length (mm)",339,43.8970501474926,0.297120357724709,NA
+"Culmen Depth (mm)",339,17.1734513274336,0.106929494820509,NA
+"Flipper Length (mm)",339,200.790560471976,0.763331873651018,NA
+"Body Mass (g)",339,4196.16519174041,43.6238102256533,NA
